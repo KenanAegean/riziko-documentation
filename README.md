@@ -72,7 +72,8 @@ This means chain reactions (a Joker changing a score that then triggers a boss a
 ### Tile System
 `TileManager` handles the full deck lifecycle: shuffling, dealing, and tracking tile state. Each `Tile` stores its value, colour, and current state. `TileVisual` handles rendering and animation. `TileScriptable` assets define tile types in the editor so tile data stays out of code.
 
-### Hand Solver (`RizikoRules`)
+### Hand Solver 
+(`RizikoRules`)
 A pure C# class with no Unity dependencies that validates and scores tile plays. It uses **recursive backtracking** to find the mathematically best hand every time, so you never get a suboptimal result from a greedy approach. It recognises sets, runs, pairs, and also detects "sloppy play" for score penalties.
 
 ### Joker Engine
@@ -90,7 +91,7 @@ The seed controls the entire run deterministically: shop inventory, Joker pool, 
 ### PlayFab Backend
 `PlayFabManager` covers authentication, leaderboard submissions, and user data. Because `BigInteger` scores are too large for PlayFab's integer columns, each score is sent as both a truncated integer (for sorting) and a full string (for display). `LeaderboardUI` reads the string back and reconstructs the real value.
 
-### Localization & Data-Driven UI
+### Localization And Data-Driven UI
 `LocalizationManager` keeps all UI strings in one place. Components like `HandTypesHelpUI` and `DeckPreviewUI` pull from it at runtime so nothing is hardcoded. `GameRulesConfig` externalises all balance values so I can tune the game without touching code.
 
 ### BigInteger Scoring
@@ -106,9 +107,9 @@ Before switching to `BigInteger`, heavy Joker multipliers caused integer overflo
 
 ## Development Process
 
-**Notebook-First Design**
+**Using Physical Notebook While Developing**
 
-Before coding any system I drew out the state machine and logic flow on paper first. This was especially useful for the ActionStack and boss encounter flow where getting the sequencing wrong caused hard-to-trace bugs.
+I maintained a physical notebook throughout the project to keep track of active bugs and write down new ideas as they emerged. This immediate, offline method ensured I never lost track of a critical fix or a passing creative concept.
 
 ![Development notebook](./for_readme/notes.jpg)
 
@@ -138,7 +139,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Riziko.YourNamespace
+namespace Riziko.MyNamespace
 {
     /// <summary>
     /// Core summary of the class's responsibility and purpose.
@@ -147,7 +148,7 @@ namespace Riziko.YourNamespace
     /// Provide any additional context, fallback behaviors, or explanations of how 
     /// this class interacts with other systems here (optional).
     /// </remarks>
-    public class YourClassName : MonoBehaviour
+    public class MyClassName : MonoBehaviour
     {
         // ========================================================================
         // Inspector Settings
