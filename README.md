@@ -115,7 +115,7 @@ I maintained a physical notebook throughout the project to keep track of active 
 
 **Version Control**
 
-250+ commits with semantic versioning across the full development cycle.
+250+ commits on my private github repo.
 
 ![Commit](./for_readme/commit.png)
 
