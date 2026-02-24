@@ -4,7 +4,7 @@
   <img src="for_readme/logo2.png" width="350" title="hover text"><br>
 </p>
 
-**▶ Play it now:** [kenanege.itch.io/riziko](https://kenanege.itch.io/riziko)
+**Play it on Itch:** [kenanege.itch.io/riziko](https://kenanege.itch.io/riziko)
 
 Riziko is a roguelike deck-builder built on top of Turkish Rummy (*Okey 101*) tile-melding rules. You build a hand of Jokers that modify and multiply your score, and try to outlast a boss before they outscore you.
 
