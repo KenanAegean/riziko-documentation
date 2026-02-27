@@ -99,7 +99,7 @@ Late-game Joker stacking produces numbers that overflow regular int and long typ
 
 ---
 
-## The Biggest Bug
+## The Biggest Bug/Issue
 
 Before switching to `BigInteger`, heavy Joker multipliers caused integer overflow. The score would wrap around to a huge negative number, which broke the conditional checks in `ActionStackManager`, corrupted the game state, and locked the turn indefinitely with no way out. Refactoring the whole scoring pipeline to use `BigInteger` fixed it and removed any practical limit on how high scores can go.
 
@@ -110,6 +110,7 @@ Before switching to `BigInteger`, heavy Joker multipliers caused integer overflo
 **Using Physical Notebook While Developing**
 
 I maintained a physical notebook throughout the project to keep track of active bugs and write down new ideas as they emerged. This immediate, offline method ensured I never lost track of a critical fix or a passing creative concept.
+* Example Page:
 
 ![Development notebook](./for_readme/notes.jpg)
 
@@ -127,7 +128,23 @@ I maintained a physical notebook throughout the project to keep track of active 
 
 **Code Comments**
 
-All scripts follow a consistent structure and documentation style:
+I searched up the best practices for commenting code in Unity projects, and this is what I decided to use. It really helps keep things organized, especially when trying to keep track of all the logic for runs, rounds, and hands without getting lost.
+
+Here is a brief explanation of how I use it:
+
+* File Headers: At the very top, I write a quick summary of what the script does and any dependencies. That way, I don't have to read the whole file to remember its main purpose.
+
+* Dividers (// ===): I use these to split the code into clear sections (like Lifecycle, Public API, Internal Logic). It acts kind of like a visual minimap.
+
+* XML Docs (///): I add these to classes and methods so I get nice tooltips in my IDE when I'm calling them from other scripts.
+
+* Inspector Tags ([Header], [Tooltip]): Keeps the Unity Inspector super clean and explains exactly what each variable does right in the editor.
+
+* Internal State Separation: I strictly separate variables exposed to the inspector from my internal state variables, which stops me from accidentally messing up private data while testing in the editor.
+
+* Step-by-Step Subsections (// ── ): Inside bigger methods, I break things down into numbered steps. This usually matches the logic flows I draw out in my notebook first, which makes debugging complex mechanics way easier later on.
+
+Here is the template:
 ```csharp
 // ============================================================================
 // Short description of what this script does at a high level.
